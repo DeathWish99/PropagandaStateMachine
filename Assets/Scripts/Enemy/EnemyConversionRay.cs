@@ -15,6 +15,7 @@ public class EnemyConversionRay : MonoBehaviour
     
     SpriteRenderer rayColor;
 
+    public int enemyConverted;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,8 @@ public class EnemyConversionRay : MonoBehaviour
 
         rayColor = GetComponentInChildren<SpriteRenderer>();
         rayColor.color = new Color(1f, 0f, 0f, .3f);
+
+        enemyConverted = 0;
     }
 
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class EnemyConversionRay : MonoBehaviour
         {
             for (int i = 0; i < neutrals.Count; i++)
             {
-                neutrals[i].GetComponent<NeutralController>().faith -= 0.58f;
+                neutrals[i].GetComponent<NeutralController>().faith -= 0.65f;
 
                 if (neutrals[i].GetComponent<NeutralController>().faith <= 0)
                 {
@@ -54,6 +57,10 @@ public class EnemyConversionRay : MonoBehaviour
                     }
                     neutrals[i].tag = "EnemyConverted";
                     neutrals[i].GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
+                    if(neutrals[i].tag == "EnemyConverted")
+                    {
+                        enemyConverted++;
+                    }
                     neutrals.Remove(neutrals[i]);
                     controller.FindClosest(true);
                 }

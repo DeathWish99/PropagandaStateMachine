@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NeutralController : MonoBehaviour
 {
-    public GameObject Player;
-    public GameObject Enemy;
+    public GameObject player;
+    public GameObject enemy;
 
     public float faith;
     public float speed;
@@ -16,8 +16,8 @@ public class NeutralController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindWithTag("Player");
-        Enemy = GameObject.FindWithTag("Enemy");
+        player = GameObject.FindWithTag("Player");
+        enemy = GameObject.FindWithTag("Enemy");
 
         direction = new Vector2(Random.Range(-1, 2), Random.Range(-1, 2));
 
@@ -57,21 +57,30 @@ public class NeutralController : MonoBehaviour
 
     void FollowPlayer()
     {
-        distance = Vector2.Distance(transform.position, Player.transform.position);
-
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        speed = 8f;
         if(distance > 2f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
     }
 
     void FollowEnemy()
     {
-        distance = Vector2.Distance(transform.position, Enemy.transform.position);
-
+        distance = Vector2.Distance(transform.position, enemy.transform.position);
+        speed = 5f;
         if (distance > 2f)
         {
-            transform.position = Vector2.MoveTowards(transform.position, Enemy.transform.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, enemy.transform.position, speed * Time.deltaTime);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            Vector2 tempDirection = direction;
+            direction = new Vector2(tempDirection.x * -1, tempDirection.y * -1);
         }
     }
 }

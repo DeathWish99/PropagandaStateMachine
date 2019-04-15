@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class SpawnNeutrals : MonoBehaviour
 {
-    private List<GameObject> neutralsInWorld;
+    public GameObject neutral;
+    public GameObject group;
 
+    private Vector3 spawnPos;
+
+    public int neutralCount;
+    private int neutralLimit;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        neutralLimit = 30;
+        SpawnerControl();
+    }
+
     void Start()
     {
         
@@ -16,5 +27,23 @@ public class SpawnNeutrals : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void SpawnerControl()
+    {
+        for(int i = 0; i < neutralLimit; i++)
+        {
+            spawnPos = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), 0);
+            Instantiate(neutral, spawnPos, Quaternion.identity, group.transform);
+            neutralCount++;
+        }
+    }
+
+    void SpawnWhenEmpty()
+    {
+        if (neutralCount <= 10)
+        {
+            SpawnerControl();
+        }
     }
 }
