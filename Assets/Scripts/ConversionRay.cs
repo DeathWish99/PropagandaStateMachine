@@ -12,6 +12,7 @@ public class ConversionRay : MonoBehaviour
     Vector3 dir;
 
     float angle;
+    float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class ConversionRay : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            timer += Time.deltaTime;
             ray.SetActive(true);
             for (int i = 0; i < neutrals.Count; i++)
             {
@@ -76,10 +78,8 @@ public class ConversionRay : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Neutral")
-        {
-            neutrals.Remove(collision.gameObject);
-        }
+        neutrals.Remove(collision.gameObject);
+    
     }
 }
     

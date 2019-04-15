@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject[] neutrals;
+    public GameObject[] neutralsInWorld;
     public GameObject neutral;
 
     public float speed;
@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        neutrals = GameObject.FindGameObjectsWithTag("Neutral");
+        neutralsInWorld = GameObject.FindGameObjectsWithTag("Neutral");
         speed = 5f;
         FindClosest(true);
     }
@@ -27,15 +27,15 @@ public class EnemyController : MonoBehaviour
     {
         if(isFind)
         {
-            neutrals = GameObject.FindGameObjectsWithTag("Neutral");
-            float distance = Vector2.Distance(transform.position, neutrals[0].transform.position);
-            neutral = neutrals[0];
-            for (int i = 0; i < neutrals.Length; i++)
+            neutralsInWorld = GameObject.FindGameObjectsWithTag("Neutral");
+            float distance = Vector2.Distance(transform.position, neutralsInWorld[0].transform.position);
+            neutral = neutralsInWorld[0];
+            for (int i = 0; i < neutralsInWorld.Length; i++)
             {
-                if (Vector2.Distance(transform.position, neutrals[i].transform.position) < distance)
+                if (Vector2.Distance(transform.position, neutralsInWorld[i].transform.position) < distance)
                 {
-                    distance = Vector2.Distance(transform.position, neutrals[i].transform.position);
-                    neutral = neutrals[i];
+                    distance = Vector2.Distance(transform.position, neutralsInWorld[i].transform.position);
+                    neutral = neutralsInWorld[i];
                 }
             }
         }

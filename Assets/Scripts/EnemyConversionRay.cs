@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Conversion ray script for Enemy. Shares a lot with Player ConversionRay, but fine tuned
+/// Conversion ray script for Enemy. Shares a lot with ConversionRay, but fine tuned
 /// for the Enemy.
 /// </summary>
 public class EnemyConversionRay : MonoBehaviour
@@ -68,9 +68,6 @@ public class EnemyConversionRay : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Neutral")
-        {
-            neutrals.Remove(collision.gameObject);
-        }
+        neutrals.Remove(collision.gameObject);
     }
 }
