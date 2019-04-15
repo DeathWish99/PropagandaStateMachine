@@ -1074,5 +1074,15 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1770763408499059023, guid: c6603158c9ee180469095f37ab1a5b14,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: 0.27566248
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770763408499059023, guid: c6603158c9ee180469095f37ab1a5b14,
+        type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
+      value: 0.040499322
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6603158c9ee180469095f37ab1a5b14, type: 3}
