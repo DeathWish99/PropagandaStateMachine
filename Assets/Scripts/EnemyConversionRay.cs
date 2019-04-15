@@ -48,12 +48,21 @@ public class EnemyConversionRay : MonoBehaviour
 
                 if (neutrals[i].GetComponent<NeutralController>().faith <= 0)
                 {
+                    if(neutrals[i].tag == "PlayerConverted")
+                    {
+                        break;
+                    }
                     neutrals[i].tag = "EnemyConverted";
                     neutrals[i].GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
                     neutrals.Remove(neutrals[i]);
                     controller.FindClosest(true);
                 }
+                
             }
+        }
+        if (collision.tag == "PlayerConverted")
+        {
+            controller.FindClosest(true);
         }
     }
 

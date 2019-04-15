@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     {
         if(isFind)
         {
+            neutrals = GameObject.FindGameObjectsWithTag("Neutral");
             float distance = Vector2.Distance(transform.position, neutrals[0].transform.position);
             neutral = neutrals[0];
             for (int i = 0; i < neutrals.Length; i++)
@@ -38,13 +39,16 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
-        
     }
 
     public void MoveToNearest()
     {
         float angle = Mathf.Atan2(neutral.transform.position.y, neutral.transform.position.x) * Mathf.Rad2Deg;
+        float distance = Vector2.Distance(transform.position, neutral.transform.position);
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        transform.position = Vector2.MoveTowards(transform.position, neutral.transform.position, speed * Time.deltaTime);
+        if(distance > 1f)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, neutral.transform.position, speed * Time.deltaTime);
+        }
     }
 }
