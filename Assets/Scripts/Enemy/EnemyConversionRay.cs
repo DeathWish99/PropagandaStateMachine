@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Conversion ray script for Enemy. Shares a lot with ConversionRay, but fine tuned
+/// Conversion ray script for Enemy. Shares a lot with PlayerConversionRay, but fine tuned
 /// for the Enemy.
 /// </summary>
 public class EnemyConversionRay : MonoBehaviour
@@ -15,7 +15,7 @@ public class EnemyConversionRay : MonoBehaviour
     
     SpriteRenderer rayColor;
 
-    public int enemyConverted;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +23,7 @@ public class EnemyConversionRay : MonoBehaviour
 
         rayColor = GetComponentInChildren<SpriteRenderer>();
         rayColor.color = new Color(1f, 0f, 0f, .3f);
-
-        enemyConverted = 0;
+        
     }
 
     // Update is called once per frame
@@ -51,23 +50,21 @@ public class EnemyConversionRay : MonoBehaviour
 
                 if (neutrals[i].GetComponent<NeutralController>().faith <= 0)
                 {
-                    if(neutrals[i].tag == "PlayerConverted")
+                    if(neutrals[i].tag == "PlayerConverted") //This is so the enemy doesn't stick to a neutral that has been converted by the player.
                     {
                         break;
                     }
                     neutrals[i].tag = "EnemyConverted";
                     neutrals[i].GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.red);
-                    if(neutrals[i].tag == "EnemyConverted")
-                    {
-                        enemyConverted++;
-                    }
+                    neutrals[i].GetComponent<NeutralController>().tagChange = true;
+                    //Debug.Log(neutrals[i].tag);
                     neutrals.Remove(neutrals[i]);
                     controller.FindClosest(true);
                 }
                 
             }
         }
-        if (collision.tag == "PlayerConverted")
+        if (collision.tag == "PlayerConverted") //Makes sure that it always searches for neutrals.
         {
             controller.FindClosest(true);
         }

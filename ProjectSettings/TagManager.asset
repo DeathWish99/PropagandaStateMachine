@@ -9,6 +9,10 @@ TagManager:
   - EnemyConverted
   - Enemy
   - Wall
+  - PlayerRay
+  - EnemyRay
+  - Spawner
+  - UI
   layers:
   - Default
   - TransparentFX

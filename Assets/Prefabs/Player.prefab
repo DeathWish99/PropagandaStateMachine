@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3573281311771806415}
   m_Layer: 0
   m_Name: PropagandaRay
-  m_TagString: Untagged
+  m_TagString: PlayerRay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,3 +251,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neutrals: []
   ray: {fileID: 7486043796216728911}
+  playerConverted: 0

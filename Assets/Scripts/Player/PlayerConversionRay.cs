@@ -14,7 +14,7 @@ public class PlayerConversionRay : MonoBehaviour
     float angle;
     float timer;
 
-    public int playerConverted;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,7 @@ public class PlayerConversionRay : MonoBehaviour
         //playerColor = GetComponentInParent<SpriteRenderer>(); //Obsolete. Wanted to use this to get the player color.
         rayColor = GetComponentInChildren<SpriteRenderer>();
         rayColor.color = new Color(0f, 1f, 1f, .3f);
-
-        playerConverted = 0;
+        
     }
 
     // Update is called once per frame
@@ -56,10 +55,8 @@ public class PlayerConversionRay : MonoBehaviour
                 {
                     neutrals[i].tag = "PlayerConverted";
                     neutrals[i].GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.blue);
-                    if(neutrals[i].tag == "PlayerConverted")
-                    {
-                        playerConverted++;
-                    }
+                    neutrals[i].GetComponent<NeutralController>().tagChange = true;
+                    //Debug.Log(neutrals[i].tag);
                     neutrals.Remove(neutrals[i]);
                 }
             }

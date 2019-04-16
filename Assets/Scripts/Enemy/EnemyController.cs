@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script that contains all enemy behaviour.
+/// </summary>
 public class EnemyController : MonoBehaviour
 {
     public GameObject[] neutralsInWorld;
@@ -23,6 +26,7 @@ public class EnemyController : MonoBehaviour
         MoveToNearest();
     }
 
+    //Searches all Neutrals that are in the field, and locks in to the nearest one.
     public void FindClosest(bool isFind)
     {
         if(isFind)
@@ -41,6 +45,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //Moves to the neutral that has been locked in by FindClosest.
     public void MoveToNearest()
     {
         float angle = Mathf.Atan2(neutral.transform.position.y, neutral.transform.position.x) * Mathf.Rad2Deg;

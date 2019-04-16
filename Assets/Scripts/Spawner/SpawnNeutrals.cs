@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script used to control Neutral spawning.
+/// </summary>
 public class SpawnNeutrals : MonoBehaviour
 {
     public GameObject neutral;
@@ -17,16 +20,10 @@ public class SpawnNeutrals : MonoBehaviour
         neutralLimit = 30;
         SpawnerControl();
     }
-
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        SpawnWhenEmpty();
     }
 
     void SpawnerControl()
