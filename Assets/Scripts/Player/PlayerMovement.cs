@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controls player movement.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
@@ -13,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
     }
 
+    //Movement method.
     void Movement()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");

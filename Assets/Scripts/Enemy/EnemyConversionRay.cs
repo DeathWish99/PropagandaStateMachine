@@ -40,6 +40,7 @@ public class EnemyConversionRay : MonoBehaviour
         }
     }
 
+    //Converts Neutral to Enemy Slave.
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Neutral")

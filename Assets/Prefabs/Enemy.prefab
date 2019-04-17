@@ -174,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neutrals: []
   ray: {fileID: 7642324310301334069}
-  enemyConverted: 0
 --- !u!1 &7642324310301334069
 GameObject:
   m_ObjectHideFlags: 0

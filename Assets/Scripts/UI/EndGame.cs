@@ -4,44 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// For the end panel to show
+/// </summary>
 public class EndGame : MonoBehaviour
 {
-    private TextControl canvas;
-    
     public Text winText;
     public Text drawText;
     public Text loseText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        canvas = gameObject.GetComponentInParent<TextControl>();
-        gameObject.SetActive(false);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    //Show end screen
     public void ShowEndScreen()
     {
-        gameObject.SetActive(true);
         Time.timeScale = 0;
-        if(canvas.playerConverted > canvas.enemyConverted)
+        if (gameObject.GetComponentInParent<UiControl>().playerConverted > gameObject.GetComponentInParent<UiControl>().enemyConverted)
         {
-            loseText.gameObject.SetActive(false);
-            drawText.gameObject.SetActive(false);
+            winText.gameObject.SetActive(true);
         }
-        else if(canvas.playerConverted < canvas.enemyConverted)
+        else if (gameObject.GetComponentInParent<UiControl>().playerConverted < gameObject.GetComponentInParent<UiControl>().enemyConverted)
         {
-            winText.gameObject.SetActive(false);
-            drawText.gameObject.SetActive(false);
+            loseText.gameObject.SetActive(true);
         }
         else
         {
-            winText.gameObject.SetActive(false);
-            loseText.gameObject.SetActive(false);
+            drawText.gameObject.SetActive(true);
         }
+        
     }
 }

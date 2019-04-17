@@ -251,4 +251,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neutrals: []
   ray: {fileID: 7486043796216728911}
-  playerConverted: 0

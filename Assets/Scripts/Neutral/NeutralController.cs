@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class NeutralController : MonoBehaviour
 {
+    private new AudioSource audio;
+
     public GameObject player;
     public GameObject enemy;
     public GameObject spawner;
@@ -23,6 +25,8 @@ public class NeutralController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audio = GetComponent<AudioSource>();
+
         player = GameObject.FindWithTag("Player");
         enemy = GameObject.FindWithTag("Enemy");
         spawner = GameObject.FindWithTag("Spawner");
@@ -97,11 +101,13 @@ public class NeutralController : MonoBehaviour
         {
             if (gameObject.tag == "PlayerConverted")
             {
-                ui.GetComponent<TextControl>().playerConverted += 1;
+                ui.GetComponent<UiControl>().playerConverted += 1;
+                audio.Play();
             }
             else if (gameObject.tag == "EnemyConverted")
             {
-                ui.GetComponent<TextControl>().enemyConverted += 1;
+                ui.GetComponent<UiControl>().enemyConverted += 1;
+                audio.Play();
             }
             spawner.GetComponent<SpawnNeutrals>().neutralCount--;
             //Debug.Log(spawner.GetComponent<SpawnNeutrals>().neutralCount);

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The controller of the ray attached to the player.
+/// </summary>
 public class PlayerConversionRay : MonoBehaviour
 {
-    public List<GameObject> neutrals;
-    public GameObject ray;
+    public List<GameObject> neutrals; //Neutrals that are inside the collider gets put here.
+    public GameObject ray; //Not the actual ray. Just a sprite used to indicate it
 
     //SpriteRenderer playerColor;
     SpriteRenderer rayColor;
@@ -13,9 +16,7 @@ public class PlayerConversionRay : MonoBehaviour
 
     float angle;
     float timer;
-
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +35,15 @@ public class PlayerConversionRay : MonoBehaviour
         
     }
 
+    //Makes the ray follow the mouse.
     void FollowMouse()
     {
-        dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position); //Gets the mouse direction
+        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg; //gets the angle we want
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); 
     }
 
+    //Converts Neutrals to a Player Slave. Affects every neutral inside the ray.
     void ConvertNeutral()
     {
         if (Input.GetMouseButton(0))
